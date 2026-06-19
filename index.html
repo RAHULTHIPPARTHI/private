@@ -1,0 +1,662 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Beautiful Wife ❤️</title>
+  <style>
+    :root {
+      --background-1: #f7c6d5;
+      --background-2: #d38dbb;
+      --background-3: #f4a3b8;
+      --text-soft: #fff7fb;
+      --glass: rgba(255, 255, 255, 0.18);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --accent: #ffd1dd;
+      --accent-2: #ff7fa7;
+      --shadow: 0 20px 60px rgba(107, 42, 78, 0.18);
+      font-family: 'Poppins', Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: radial-gradient(circle at top left, #ffdaf6 0%, transparent 30%),
+                  radial-gradient(circle at bottom right, #f9a0c1 0%, transparent 28%),
+                  linear-gradient(135deg, #f7c6d5 0%, #d38dbb 45%, #ee6f8d 100%);
+      color: var(--text-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      transition: background 0.6s ease;
+    }
+
+    .page-wrap {
+      width: 100%;
+      max-width: 1100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero, .screen {
+      min-height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+      position: relative;
+    }
+
+    .hero.active, .screen.active {
+      display: flex;
+      animation: fadeIn 1s ease;
+    }
+
+    .glass-card {
+      background: var(--glass);
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      padding: 36px;
+      width: min(100%, 760px);
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      pointer-events: none;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      margin-bottom: 18px;
+      text-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+      font-size: clamp(1.2rem, 2vw, 1.9rem);
+      font-weight: 400;
+      margin-bottom: 32px;
+      color: #ffe9f1;
+    }
+
+    p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto 32px;
+      color: rgba(255, 245, 252, 0.92);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
+    button,
+    .next-button {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 16px 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      background: linear-gradient(135deg, #ff83b7, #e24a93);
+      box-shadow: 0 18px 34px rgba(236, 81, 149, 0.32);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.35s ease;
+    }
+
+    button:hover,
+    .next-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 42px rgba(236, 81, 149, 0.40);
+    }
+
+    .start-button {
+      width: min(280px, 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .start-button::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255,255,255,0.35), transparent 40%);
+      opacity: 0.7;
+      transition: transform 0.7s ease;
+    }
+
+    .start-button:hover::after {
+      transform: scale(1.08);
+    }
+
+    .tiny-note {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 14px;
+    }
+
+    .heart-container,
+    .memory-grid,
+    .final-heart {
+      position: relative;
+    }
+
+    .heart-container {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 20px auto 10px;
+      max-width: 680px;
+    }
+
+    .heart {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #ff83b7, #f97b99);
+      position: relative;
+      transform: rotate(-45deg);
+      border-radius: 18px 18px 0 0;
+      cursor: pointer;
+      box-shadow: 0 16px 40px rgba(246, 93, 144, 0.3);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .heart::before {
+      top: -35px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 35px;
+      top: 0;
+    }
+
+    .heart span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      place-items: center;
+      transform: rotate(45deg);
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.95);
+    }
+
+    .heart.small {
+      width: 56px;
+      height: 56px;
+    }
+
+    .heart.game-heart {
+      width: 90px;
+      height: 90px;
+      animation: float 5.3s ease-in-out infinite;
+    }
+
+    .heart.clicked {
+      opacity: 0.45;
+      pointer-events: none;
+      transform: scale(0.95) rotate(-45deg);
+    }
+
+    .feel {
+      font-size: 1rem;
+      min-height: 28px;
+      color: #fff6fb;
+      margin-top: 12px;
+      letter-spacing: 0.02em;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 24px;
+      animation: drift 1.8s ease infinite alternate;
+    }
+
+    .memory-card {
+      border-radius: 26px;
+      padding: 22px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      box-shadow: 0 20px 50px rgba(79, 33, 69, 0.15);
+      color: #ffffff;
+      text-align: left;
+      backdrop-filter: blur(12px);
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .memory-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 45%);
+      pointer-events: none;
+    }
+
+    .memory-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .memory-card p {
+      opacity: 0.92;
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .final-heart {
+      width: 220px;
+      height: 220px;
+      margin: 0 auto 24px;
+      background: radial-gradient(circle at 30% 30%, #ffd0e4 0%, #ff6396 48%, #e93c76 100%);
+      position: relative;
+      border-radius: 48% 52% 50% 50% / 45% 42% 58% 55%;
+      animation: pulse 1.8s ease infinite;
+      box-shadow: 0 0 80px rgba(255, 120, 171, 0.4);
+    }
+
+    .final-heart::before,
+    .final-heart::after {
+      content: '';
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: inherit;
+      top: -60px;
+      left: 34px;
+    }
+
+    .final-heart::after {
+      left: auto;
+      right: 34px;
+    }
+
+    .message-block {
+      text-align: left;
+      margin-top: 14px;
+      line-height: 1.8;
+      max-width: 750px;
+      margin-left: auto;
+      margin-right: auto;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .message-block strong {
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .confetti {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      width: 10px;
+      height: 18px;
+      background: #fff7fb;
+      opacity: 0.95;
+      transform-origin: center;
+      animation: confetti-fall 3.5s ease-in forwards;
+    }
+
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-45deg); }
+      50% { transform: translateY(-18px) rotate(-45deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+    }
+
+    @keyframes drift {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-12px); }
+    }
+
+    @keyframes confetti-fall {
+      0% { opacity: 1; transform: translateY(0) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(520px) rotate(720deg); }
+    }
+
+    .background-heart {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      opacity: 0.18;
+      background: radial-gradient(circle, rgba(255,255,255,0.75), transparent 60%);
+      filter: blur(3px);
+      border-radius: 50%;
+      animation: drift 10s linear infinite;
+    }
+
+    .background-heart:nth-child(1) { top: 8%; left: 6%; animation-duration: 11s; }
+    .background-heart:nth-child(2) { top: 22%; right: 8%; animation-duration: 14s; }
+    .background-heart:nth-child(3) { bottom: 12%; left: 10%; animation-duration: 12s; }
+    .background-heart:nth-child(4) { bottom: 24%; right: 20%; animation-duration: 13s; }
+    .background-heart:nth-child(5) { top: 48%; left: 44%; animation-duration: 15s; }
+
+    @media (max-width: 720px) {
+      .glass-card { padding: 28px; border-radius: 26px; }
+      .button-row { gap: 12px; }
+      .heart { width: 60px; height: 60px; }
+      .heart::before, .heart::after { width: 60px; height: 60px; }
+      .final-heart { width: 180px; height: 180px; }
+      .memory-card { min-height: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-heart"></div>
+  <div class="background-heart"></div>
+  <div class="background-heart"></div>
+  <div class="background-heart"></div>
+  <div class="background-heart"></div>
+
+  <div class="page-wrap">
+    <section class="hero active" id="heroScreen">
+      <div class="glass-card">
+        <h1>For My Beautiful Wife ❤️</h1>
+        <h2>I have something important to tell you...</h2>
+        <p>This letter is wrapped in every color of my love. Click start when you're ready to hear my heart.</p>
+        <div class="button-row">
+          <button class="start-button" id="startButton">Start</button>
+        </div>
+        <p class="tiny-note">Music will play after you press start.</p>
+      </div>
+    </section>
+
+    <section class="screen" id="story1">
+      <div class="glass-card">
+        <h1>I know I hurt you.</h1>
+        <p>My heart is full of regret, and I am here with a promise to listen, learn, and love you better every day.</p>
+        <div class="button-row">
+          <button class="next-button" data-target="story2">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="story2">
+      <div class="glass-card">
+        <h1>You are the most precious person in my life.</h1>
+        <p>Your kindness, your warmth, and the way you light up every room makes me feel blessed beyond words.</p>
+        <div class="heart-container">
+          <div class="heart small"></div>
+          <div class="heart small"></div>
+          <div class="heart small"></div>
+          <div class="heart small"></div>
+          <div class="heart small"></div>
+        </div>
+        <div class="button-row">
+          <button class="next-button" data-target="story3">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="story3">
+      <div class="glass-card">
+        <h1>Every moment with you is a blessing.</h1>
+        <p>I treasure our memories, our laughter, and the quiet moments that make our love feel like home.</p>
+        <div class="memory-grid">
+          <div class="memory-card">
+            <h3>Our first date</h3>
+            <p>A smile that started a thousand beautiful days.</p>
+          </div>
+          <div class="memory-card">
+            <h3>Sunset walks</h3>
+            <p>Hand in hand, dreaming of everything we could become.</p>
+          </div>
+          <div class="memory-card">
+            <h3>Secret jokes</h3>
+            <p>The little sparks that keep my mornings full of joy.</p>
+          </div>
+        </div>
+        <div class="button-row">
+          <button class="next-button" data-target="story4">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="story4">
+      <div class="glass-card">
+        <h1>I am truly sorry for my mistakes.</h1>
+        <p>All I want is to make amends and prove that my love is stronger than any regret.</p>
+        <div class="heart-container">
+          <div class="heart"></div>
+          <div class="heart"></div>
+          <div class="heart"></div>
+        </div>
+        <div class="button-row">
+          <button class="next-button" data-target="gameScreen">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="gameScreen">
+      <div class="glass-card">
+        <h1>A small game for my love.</h1>
+        <p>Click the five floating hearts to reveal the loving thoughts I carry for you.</p>
+        <div class="heart-container" id="gameHearts">
+          <div class="heart game-heart" data-message="I miss your smile ❤️"><span>❤️</span></div>
+          <div class="heart game-heart" data-message="I miss your laugh ❤️"><span>❤️</span></div>
+          <div class="heart game-heart" data-message="I miss our moments ❤️"><span>❤️</span></div>
+          <div class="heart game-heart" data-message="You mean everything to me ❤️"><span>❤️</span></div>
+          <div class="heart game-heart" data-message="I love you endlessly ❤️"><span>❤️</span></div>
+        </div>
+        <p class="feel" id="heartMessage">Click a heart to reveal the message.</p>
+        <div class="button-row">
+          <button class="next-button hidden" id="gameNext" data-target="finalScreen">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="finalScreen">
+      <div class="glass-card">
+        <div class="final-heart"></div>
+        <div class="message-block">
+          <strong>My Love,</strong>
+          <p>I know I made mistakes.</p>
+          <p>I never wanted to hurt you.</p>
+          <p>You are my best friend, my happiness, and my home.</p>
+          <p>I am truly sorry.</p>
+          <p>Please forgive me and give me a chance to make things right.</p>
+          <p>I love you forever. ❤️</p>
+        </div>
+        <div class="button-row">
+          <button class="next-button" id="forgiveButton">Forgive Me ❤️</button>
+          <button class="next-button" id="thinkButton">Let Me Think 😊</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" id="resultScreen">
+      <div class="glass-card">
+        <h1>Thank You My Love ❤️</h1>
+        <p>I Promise To Be Better Every Day.</p>
+        <div class="button-row">
+          <button class="start-button" id="restartButton">Read Again</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="confetti hidden" id="confetti"></div>
+
+  <!-- Replace the music source below with your personal song file. Keep it in the same folder or adjust the path. -->
+  <audio id="backgroundMusic" loop>
+    <source src="your-music-file.mp3" type="audio/mpeg" />
+    <!-- Optional: add more source formats here. -->
+  </audio>
+
+  <script>
+    // Instructions: Replace the text inside the content strings if you want to personalize the apology.
+    const screens = Array.from(document.querySelectorAll('.screen, .hero'));
+    const startButton = document.getElementById('startButton');
+    const nextButtons = document.querySelectorAll('.next-button[data-target]');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+    const heroScreen = document.getElementById('heroScreen');
+    const heartMessage = document.getElementById('heartMessage');
+    const gameHearts = document.getElementById('gameHearts');
+    const gameNext = document.getElementById('gameNext');
+    const forgiveButton = document.getElementById('forgiveButton');
+    const thinkButton = document.getElementById('thinkButton');
+    const restartButton = document.getElementById('restartButton');
+    const confetti = document.getElementById('confetti');
+
+    let heartsClicked = 0;
+
+    function showScreen(screenId) {
+      screens.forEach((screen) => {
+        screen.classList.toggle('active', screen.id === screenId);
+      });
+      if (screenId === 'finalScreen') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    }
+
+    function playMusic() {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play().catch(() => {
+          // In some browsers audio play may not happen until a user interacts again.
+        });
+      }
+    }
+
+    startButton.addEventListener('click', () => {
+      showScreen('story1');
+      playMusic();
+    });
+
+    nextButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const target = button.dataset.target;
+        showScreen(target);
+      });
+    });
+
+    gameHearts.querySelectorAll('.heart').forEach((heart) => {
+      heart.addEventListener('click', () => {
+        if (heart.classList.contains('clicked')) return;
+        const message = heart.dataset.message || 'You are my heart ❤️';
+        heart.classList.add('clicked');
+        heartMessage.textContent = message;
+        heartsClicked += 1;
+
+        if (heartsClicked >= 5) {
+          heartMessage.textContent = 'All messages are revealed. When you are ready, continue.';
+          gameNext.classList.remove('hidden');
+        }
+      });
+    });
+
+    forgiveButton.addEventListener('click', () => {
+      showScreen('resultScreen');
+      playMusic();
+      createConfetti();
+    });
+
+    thinkButton.addEventListener('click', () => {
+      heartMessage.textContent = 'Take your time. I will wait and listen with an open heart.';
+      thinkButton.textContent = 'I understand ❤️';
+      thinkButton.disabled = true;
+    });
+
+    restartButton.addEventListener('click', () => {
+      heartsClicked = 0;
+      heartMessage.textContent = 'Click a heart to reveal the message.';
+      gameNext.classList.add('hidden');
+      gameHearts.querySelectorAll('.heart').forEach((heart) => heart.classList.remove('clicked'));
+      thinkButton.textContent = 'Let Me Think 😊';
+      thinkButton.disabled = false;
+      showScreen('heroScreen');
+    });
+
+    function createConfetti() {
+      confetti.classList.remove('hidden');
+      confetti.innerHTML = '';
+      const colors = ['#ffe1f6', '#ffb1cc', '#ff7db3', '#ffe4fa', '#fa9ccf'];
+      for (let i = 0; i < 40; i += 1) {
+        const piece = document.createElement('span');
+        piece.className = 'confetti-piece';
+        piece.style.background = colors[i % colors.length];
+        piece.style.left = Math.random() * 100 + '%';
+        piece.style.top = Math.random() * -20 + '%';
+        piece.style.width = `${Math.random() * 10 + 8}px`;
+        piece.style.height = `${Math.random() * 18 + 8}px`;
+        piece.style.animationDuration = `${Math.random() * 1.2 + 2.8}s`;
+        piece.style.transform = `rotate(${Math.random() * 360}deg)`;
+        confetti.appendChild(piece);
+      }
+      setTimeout(() => {
+        confetti.classList.add('hidden');
+      }, 4500);
+    }
+
+    // Improve mobile touch interactions.
+    window.addEventListener('load', () => {
+      document.body.style.visibility = 'visible';
+    });
+  </script>
+</body>
+</html>
